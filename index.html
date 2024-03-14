@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Tarefas</title>
+  <link rel="stylesheet" href="./assets/styles/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header><h2 class="titulo">Lista de Tarefas</h2></header>
+  <div class="perfil">
+    <img class="fotoPerfil" src="./assets/fotos/avatar.png" alt="foto de perfil">
+    <h2 class="textoTitulo">Hitomi Murata</h2>
+    <h5 class="texto">Hitomi Murata é uma talentosa fotógrafa de 25 anos,
+      conhecida por sua paixão e habilidade em capturar momentos únicos
+      através da lente da câmera. Nascida e criada em uma cidade vibrante,
+      ela desenvolveu um olhar artístico desde cedo, inspirada pela diversidade
+      ao seu redor.
+      Dotada de um estilo fotográfico distintivo, Hitomi explora uma variedade
+      de temas, desde paisagens urbanas até retratos intimistas. Seu trabalho é
+      marcado por uma mistura de técnicas tradicionais e uma abordagem contemporânea,
+      refletindo sua capacidade de se adaptar às mudanças no mundo da fotografia.</h5>
+    <ul class="links">
+      <li><a href="#">Link 1</a></li>
+      <li><a href="#">Link 2</a></li>
+      <li><a href="#">Link 3</a></li>
+      <li><a href="#">Link 4</a></li>
+    </ul>
+  </div>
+
+  <div class="task-container">
+    <div class="task-column">
+
+      <h3>Tarefas do Dia</h3>
+      <label for="dayTaskInput">Nova Tarefa:</label>
+      <input type="text" id="dayTaskInput" placeholder="Digite a nova tarefa">
+      <button onclick="adicionarTarefa('day')">Adicionar</button>
+      <table id="dayTable">
+        <thead>
+          <tr>
+            <th>Tarefa</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="task-column">
+      <h3>Tarefas da Noite</h3>
+      <label for="nightTaskInput">Nova Tarefa:</label>
+      <input type="text" id="nightTaskInput" placeholder="Digite a nova tarefa">
+      <button onclick="adicionarTarefa('night')">Adicionar</button>
+      <table id="nightTable">
+        <thead>
+          <tr>
+            <th>Tarefa</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script>
+    function adicionarTarefa(periodo) {
+      var entradaTarefa = document.getElementById(`${periodo}TaskInput`);
+      var tabela = document.getElementById(`${periodo}Table`).getElementsByTagName('tbody')[0];
+
+      if (entradaTarefa.value.trim() === "") {
+        alert("Por favor, digite uma tarefa.");
+        return;
+      }
+      var novaLinha = tabela.insertRow();
+      var celula1 = novaLinha.insertCell(0);
+      var celula2 = novaLinha.insertCell(1);
+
+      celula1.innerHTML = entradaTarefa.value;
+      celula2.innerHTML = '<button onclick="editarTarefa(this)">Editar</button> <button onclick="excluirTarefa(this)">Excluir</button>';
+      entradaTarefa.value = "";
+    }
+
+    function editarTarefa(botao) {
+      var linha = botao.parentNode.parentNode;
+      var tarefa = linha.cells[0].innerHTML;
+      var novaTarefa = prompt("Editar tarefa:", tarefa);
+      if (novaTarefa !== null) {
+        linha.cells[0].innerHTML = novaTarefa;
+      }
+    }
+    function excluirTarefa(botao) {
+      var linha = botao.parentNode.parentNode;
+      linha.parentNode.removeChild(linha);
+    }
+  </script>
+</body>
+</html>

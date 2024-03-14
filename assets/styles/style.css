@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  background: #f5f5f5;
+  font-family: "Fira code";
+
+}
+.task-container {
+  display: block;
+  text-align: center;
+  padding: 20px;
+  margin-top: -800px;
+}
+
+.task-column {
+  margin: 1px;
+  height: 800px;
+  width: 600px;
+  background: #DDD8FF;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-size: contain;
+
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 7px;
+  text-align: center;
+  background-color: #F4EFD3;
+
+}
+
+button {
+  padding: 8px;
+  margin-right: 5px;
+}
+
+input[type="text"] {
+  padding: 9px;
+  margin: 8px;
+}
+
+.task-container {
+  display: flex;
+  justify-content: end;
+}
+
+.fotoPerfil {
+  width: 200px;
+  display: flex;
+  justify-items: center;
+  margin-left: 100px;
+}
+
+.perfil {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  gap: 40px;
+  text-decoration: none;
+  width: 400px;
+  margin: 100px;
+  margin-top: 50px;
+
+}
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+
+}
+.texto,
+.textoTitulo {
+  display: flex;
+  justify-content: center;
+}
+.titulo {
+  background-color: #DDD8FF;
+  display: flex;
+  justify-content: center;
+
+}
